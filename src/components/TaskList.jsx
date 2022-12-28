@@ -1,34 +1,34 @@
 import React from "react";
-import Checkbox from "./Checkbox"; //Iportamos el componente de Checkbox
-//Creamos la finción de TaskList con ls propiedades de list y  su función setList
+import Checkbox from "./Checkbox"; //Import the Checkbox component
+// Create the TaskList ending with ls list properties and its function setList
 const TaskList = props => {
-    const { list, setList } = props; // Propiedades
-    const onChangeStatus = e => { //Función de evento
-        const { name, checked } = e.target; //asigna una al checkbox y otra como su estado de true o false
-        const updateList = list.map(item => ({ //función que recore la lista creando un array y añadiendo items mientras que su estado sea done sea definido
+    const { list, setList } = props; // Properties
+    const onChangeStatus = e => { // Event function
+        const { name, checked } = e.target; // Assign one to the checkbox and another as its status of true or false
+        const updateList = list.map(item => ({ // function that traverses the list creating an array and adding items as long as its state is done is defined
             ...item,
             done: item.id === name ? checked : item.done
         }));
-        setList(updateList); //Dejamos como parámetro dentro del setList a updateList
+        setList(updateList); // Leave updateList as parameter inside the setList to updateList
     };
-    //Se crea una función con un evento para remover items de la lista
+    // Create a function with an event to remove items from the list
     const onClickRemoveItem = e => {
-        //Filtramos el array creado del .map y si el valor del array pasa a ser checked...
+        // Filter the array created from the .map and if the array value becomes checked...
         const updateList = list.filter(item => !item.done);
-        setList(updateList); //Hacemos uso de la función eliminando esos elementos del array
+        setList(updateList); // Make use of the function by removing these elements from the array
     };
-    //Se crea la función de chk, recore la lista creando un array y añadiendo items por cada elemento nuevo crea un componente Checkbox con 3 atributos
+    // Create the chk function, it goes through the list creating an array and adding items for each new element it creates a Checkbox component with 3 attributes
     const chk = list.map(item => (
         <Checkbox key={item.id} data={item} onChange={onChangeStatus} />
     ));
-    return ( //Regresamos la estructura HTML
+    return ( // Return HTML structure
         <div className="todo-list">
-            {/* Si en el recorrido de la lista no hay ningún elemento aparecerá un mensaje que dice "No tasks" */}
+            {/* If there is no item in the list path, a "No tasks" message will appear. */}
             {list.length ? chk : "No tasks"}
-            {/* De lo contrario */}
+            {/* Otherwise */}
             {list.length ? (
                 <p>
-                    {/* Añadirá un botón con el evento de eliminar los elmentos que estén selecionados con la función de onClickRemoveItem */}
+                    {/* Add a button with the event to remove the items that are selected with the onClickRemoveItem function. */}
                     <button className="button blue" onClick={onClickRemoveItem}>
                         Delete all done
                     </button>
@@ -37,5 +37,5 @@ const TaskList = props => {
         </div>
     );
 };
-//Exportamos el TaskList 
+//Export TaskList.
 export default TaskList;

@@ -1,13 +1,13 @@
-import React, { Fragment } from "react"; //Importamos desde react un fragmento
-//Creamos la función de Checkbox con la propiedades de onChange, data: { id, description, done } dentro de una cosntante
+import React, { Fragment } from "react"; // We import a fragment from react
+//Create the Checkbox function with the onChange properties, data: { id, description, done } inside a constant
 const Checkbox = (props) => {
     const {
         onChange,
         data: { id, description, done },
     } = props;
-    return ( //Refesamos la estructura de HTML
+    return ( // Refresh the HTML structure and return the function to be taken over
         <Fragment>
-            {/* -------------------añadimos las animaciónes y elementos visuales para el Checkbox------------------- */}
+            {/* -------------------Add the animations and visual elements for the Checkbox------------------- */}
             <svg
                 viewBox="0 0 0 0"
                 style={{ position: "absolute", zIndex: -1, opacity: 0 }}
@@ -22,7 +22,7 @@ const Checkbox = (props) => {
                     <circle id="todo__circle" cx="13.5" cy="12.5" r="10" />
                 </defs>
             </svg>
-            {/* A esta etiqueta le asignamos los valores que nos permitirán la interación con el elemento (la props de la const en la línea 4) */}
+            {/* To this tag we assign the values that will allow us to interact with the element (the props of the const in line 4) */}
             <label className="todo new-item">
                 <input
                     className="todo__state"
@@ -31,7 +31,7 @@ const Checkbox = (props) => {
                     defaultChecked={done}
                     onChange={onChange}
                 />
-                {/* Más animaciones */}
+                {/* More animations */}
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -43,7 +43,7 @@ const Checkbox = (props) => {
                     <use xlinkHref="#todo__check" className="todo__check" />
                     <use xlinkHref="#todo__circle" className="todo__circle" />
                 </svg>
-                {/* Descirpción o texto ingresado dentro de una etiqueta div */}
+                {/* Description entered inside a div tag */}
                 <div className="todo__text">{description}</div>
             </label>
         </Fragment>

@@ -1,28 +1,28 @@
-import React, { useState } from "react"; //Importamos el Hook de useState
+import React, { useState } from "react"; // Import the Hook from useState
 
-//Importamos dos componentes dento de container
+//Import two components within the container that complement each other and give it functionality
 import TaskList from "./TaskList";
 import FormTodo from "./FormTodo";
 
-//Se crea una función flecha llamada container
+//Create an arrow function called container
 const Container = () => {
-    //Utiliza ek hook de useState y su valor default cono un array vacío
+    //Use the hook of useState and its default value as an empty array
     const [list, setList] = useState([]);
-    //Hacemos de una variable constante una función en flecha
+    // Make a constant variable into an arrow function
     const handleAddItem = addItem => {
-        //Toma la función del useStatecon un parámetro de array con dos elementos:
-        // ...list = hacemos uso del spread para para expadir el array de ser necesario
-        // addItem = parámetro que añade los elementos a la lista
+        //Take the useState function with an array parameter with two elements:
+        // ...list = we make use of the spread to expand the array if needed
+        // addItem = parameter that adds the items to the list
         setList([...list, addItem]);
     };
     return (
         <div>
-            {/* Hacemos el llamado del componte FormTodo con un atributo y valor llamado "handleAddItem" (Variable que contiene nuestra función para añadir datos a la lista) */}
+            {/* We call the FormTodo component with an attribute and value called "handleAddItem" (Variable containing our function to add data to the list). */}
             <FormTodo handleAddItem={handleAddItem} />
-            {/* Se llama al componente de TaskList con los atributos y variables de "list={list}" y "setList={setList}". Variable y función del useState línea 10*/}
+            {/* The TaskList component is called with the attributes and variables of "list={list}" and "setList={setList}". Variable and function of the useState line 10*/}
             <TaskList list={list} setList={setList} />
         </div>
     );
 };
-//Exportamos el componente
+//We export the component
 export default Container;

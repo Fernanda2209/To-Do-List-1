@@ -1,26 +1,26 @@
-import React, { useState } from "react"; //Importamos el Hook de useState
-//Creamos la función de FormTodo con la propiedad de handleAddItem 
+import React, { useState } from "react"; //Import the Hook from useState
+//Create the FormTodo function with the handleAddItem property 
 const FormTodo = props => {
-    const { handleAddItem } = props; //Definimos la propiedad de la función
-    const [description, setDescription] = useState(""); //Hacemos uso e un useState
-    const handleSubmit = e => { //Se crea una función que se activará mediante un evento de onSubmit
-        e.preventDefault(); //Evita que resetee los datos recién ingresados 
+    const { handleAddItem } = props; // Define the property of the function
+    const [description, setDescription] = useState(""); // Make use of a useState
+    const handleSubmit = e => { // A function is created that will be triggered by an onSubmit event
+        e.preventDefault(); // Prevents resetting of newly entered data 
         handleAddItem({
-            done: false, //Define el valor falso para que después este cambie a true y se pueda eliminar en el TaskList
-            id: (+new Date()).toString(), //Permite añadir y eliminar el menaje
-            description //Añade el string a la lista
+            done: false, //Sets the value to false so that it will later change to true and can be deleted in the TaskList.
+            id: (+new Date()).toString(), //Allows you to add and delete the message
+            description // Add the string to the list
         });
-        setDescription(""); // Deja la sección de añadir tareas en limpio
+        setDescription(""); // Leave the add task section clean
     };
-    return ( //Regresa la estructura de HTML
-        // Al form le añadimos el evento con la función de handleSubmit
+    return ( // Return the HTML structure
+        // To the form we add the event with the handleSubmit function
         <form onSubmit={handleSubmit}>
-            {/* Creamos unj contenedor */}
+            {/* Create a container */}
             <div className="todo-list">
                 <div className="file-input">
-                    {/* Al imput le estaablecemos un atributo con la variable "description" y el evento de cambio con la función de la variable previamente mencionada */}
+                    {/* To the imput we set an attribute with the variable "description" and the change event with the function of the variable previously mentioned. */}
                     <input type="text" className="text" value={description} onChange={e => setDescription(e.target.value)}/>
-                    {/* Operador ternario que si se envía la descripción se cumple deja el imput vacío */}
+                    {/* Ternary operator that if the description is sent if the description is fulfilled leaves the imput empty */}
                     <button className="button pink" disabled={description ? "" : "disabled"}>
                         Add
                     </button>
